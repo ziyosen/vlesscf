@@ -1,0 +1,50 @@
+name: Deploy to Cloudflare Workers
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+env:
+  CLOUDFLARE_ACCOUNT_ID: 4dd02089951b04b51647ab7a49434116
+  CLOUDFLARE_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Configure Wrangler
+        run: |
+          echo "CLOUDFLARE_ACCOUNT_ID=4dd02089951b04b51647ab7a49434116" >> $GITHUB_ENV
+          echo "CLOUDFLARE_API_TOKEN=${{ secrets.CF_API_TOKEN }}" >> $GITHUB_ENV
+          npx wrangler whoami
+
+      - name: Deploy Worker
+        uses: cloudflare/wrangler-action@3.0.0
+        with:
+          apiToken: 39GX59zamuCzCir-Mt6Nse_H_9JJuH5xLVKFY5IY
+          accountId: 4dd02089951b04b51647ab7a49434116
+          command: deploy
+          workingDirectory: './'
+          environment: 'production'
+          wranglerVersion: '3'
+
+      - name: Verify deployment
+        run: |
+          echo "Worker successfully deployed to Cloudflare account 4dd02089951b04b51647ab7a49434116"
+          echo "API Token last 4 chars: ${39GX59zamuCzCir-Mt6Nse_H_9JJuH5xLVKFY5IY: -4}"

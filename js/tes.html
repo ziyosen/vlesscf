@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+          :root {
+        --primary: #00ff88;
+        --secondary: #00ffff;
+        --accent: #ff00ff;
+        --dark: #080c14;
+        --darker: #040608;
+        --light: #e0ffff;
+            --color-primary: #00ff88;
+            --color-secondary: #00ffff;
+            --color-background: #0a0f1a;
+            --color-card: rgba(15, 22, 36, 0.95);
+            --color-text: #e0f4f4;
+            --transition: all 0.3s ease;
+            
+        --card-bg: rgba(8, 12, 20, 0.95);
+        --glow: 0 0 20px rgba(0, 255, 136, 0.3);
+      }
+      
+  
+
+        body {
+  background: url('https://raw.githubusercontent.com/bitzblack/ip/refs/heads/main/shubham-dhage-5LQ_h5cXB6U-unsplash.jpg') no-repeat center center fixed;
+        background-size: cover;
+        justify-content: center;
+        align-items: center;
+  background-size: 300% 300%; /* Untuk animasi gradient */
+  color: #fff; /* Teks putih agar kontras */
+  margin: 0;
+  font-family: Arial, sans-serif; /* Font sederhana dan bersih */
+  animation: rainbowBackground 10s infinite; /* Animasi bergerak */
+}
+
+/* Animasi untuk background */
+@keyframes rainbowBackground {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes moveColors {
+  100% {
+    background-position: -200%; /* Mulai dari luar kiri */
+  }
+  0% {
+    background-position: 200%; /* Bergerak ke kanan */
+  }
+}
+       h1 {
+      font-family: 'Rajdhani', sans-serif;
+      padding-top: 10px; /* To avoid content being hidden under the header */
+      margin-top: 10px;
+      color: black;
+            text-align: center;
+            font-size: 9vw;
+            font-weight: bold;
+            text-shadow: 
+                0 0 5px rgba(0, 123, 255, 0.8),
+                0 0 10px rgba(0, 123, 255, 0.8),
+                0 0 20px rgba(0, 123, 255, 0.8),
+                0 0 30px rgba(0, 123, 255, 0.8),
+                0 0 40px rgba(0, 123, 255, 0.8);
+    
+         background: linear-gradient(45deg, var(--primary), var(--secondary), var(--dark));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 30px #000;
+        position: relative;
+        animation: titlePulse 3s ease-in-out infinite;
+    }
+
+      @keyframes titlePulse {
+        0%, 100% { transform: scale(1); filter: brightness(1); }
+        50% { transform: scale(1.02); filter: brightness(1.2); }
+      }
+    
+    h2 {
+      color: black;
+            text-align: center;
+            font-size: 4vw;
+            font-weight: bold;
+            text-shadow: 
+                0 0 5px rgba(0, 123, 255, 0.8),
+                0 0 10px rgba(0, 123, 255, 0.8),
+                0 0 20px rgba(0, 123, 255, 0.8),
+                0 0 30px rgba(0, 123, 255, 0.8),
+                0 0 40px rgba(0, 123, 255, 0.8);
+    }
+    header, footer {
+      box-sizing: border-box; /* Pastikan padding dihitung dalam lebar elemen */
+      background-color: ;
+      color: white;
+      text-align: center;
+      border: 0px solid rgba(143, 0, 0, 0.89); /* Border dengan warna abu-abu */
+      border-radius: 10px;
+      padding: 0 20px;
+      position: fixed;
+      width: 100%;
+      left: 0;
+      right: 2px;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    header {
+      top: 0;
+    }
+
+    footer {
+      bottom: 0;
+    }
+    
+  .title {
+            text-align: center;
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+       /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 50%;
+            left: -80px; /* Awalnya disembunyikan */
+            transform: translateY(-50%);
+            width: 80px;
+            background: ;
+            color: white;
+            padding: 10px 0;
+            transition: left 0.3s ease-in-out;
+            z-index: 1000;
+            border-radius: 0 10px 10px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Saat navbar terbuka */
+        .navbar.show {
+            left: 0;
+        }
+
+        .navbar a img {
+            width: 40px;
+        }
+
+        /* Tombol Toggle */
+        .toggle-btn {
+            position: absolute;
+            top: 50%;
+            right: -30px; /* Posisi tombol di tengah kanan navbar */
+            transform: translateY(-50%);
+            background: ;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 10px;
+            border-radius: 0 10px 10px 0;
+            transition: right 0.3s ease-in-out;
+        }
+
+        .toggle-btn img {
+            width: 18px;
+        }
+
+        /* Saat navbar terbuka, tombol ikut bergeser */
+        .navbar.show .toggle-btn {
+            right: -30px;
+        }
+        
+
+        .container {
+              background-color: rgba(0, 0, 0, 0.82);
+    flex: 1;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 95px;
+    margin-bottom: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: column;
+    max-width: 960px;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+
+/* Menambahkan margin-left agar konten tidak terhalang navbarr */
+    margin-left: 110px; /* Jarak sesuai dengan lebar navbarr */
+    margin-right: auto;
+
+  /* Tambahkan efek glow */
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), /* Glow putih */
+              0 0 30px rgba(0, 150, 255, 0.5);   /* Glow biru */
+  
+  /* Default untuk HP */
+  margin-left: auto;
+  margin-right: auto;
+        }
+
+
+
+          .card {
+            width: 100%;
+            margin-top: 10px;
+            padding-top: 10px; /* To avoid content being hidden under the header */
+            max-width: 500px;
+            padding: 2rem;
+            align-items: center;
+  position: relative;
+  z-index: 1;
+            
+        }
+
+         .navbarconten {
+    width: 100%;
+    overflow-x: auto; /* Mengaktifkan scroll horizontal */
+    margin-bottom: 0px;
+    border: 1px solid #000; /* Border dengan warna abu-abu */
+    border-radius: 10px; /* Membuat sudut melengkung */
+    align-items: center;
+    padding: 0px; /* Memberi jarak antara border dan konten */
+    background-color: rgba(0, 0, 0, 0.82); /* Warna latar belakang */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), /* Glow putih */
+              0 0 30px rgba(0, 150, 255, 0.5);   /* Glow biru */
+
+    }
+    </style>
+</head>
+<body>
+
+<header><h1 class="title">${namaWeb}</h1></header>
+
+<!-- Navbar -->
+
+<div class="navbar" id="navbar">
+    <button class="toggle-btn" id="menu-btn" onclick="toggleNavbar()">
+        <img src="https://bmkg.xyz/img/buka.png" id="toggle-icon" alt="Toggle Menu">
+    </button>
+        <div class="navbarconten">
+    <span><a href="${waku1}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
+    <img src="https://bmkg.xyz/img/mobile.png" alt="menu" width="40">
+  </a></span>
+        <span><a href="/api" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
+    <img src="https://bmkg.xyz/img/linksub.png" alt="menu" width="40" style="margin-top: 5px;"></a></span>
+        <span><a href="/proxy" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
+    <img src="https://bmkg.xyz/img/vpn.png" alt="menu" width="40" style="margin-top: 5px;">
+  </a></span>
+        <span><a href="${telegramku}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;"><img src="https://bmkg.xyz/img/tele.png
+" alt="menu" width="40"></a></span>
+        <span><a href="${telegrambot}" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;"><img src="https://bmkg.xyz/img/bot.png
+" alt="menu" width="40"></a></span>
+        <span><a href="${pagehost}" target="_self" rel="noopener noreferrer">
+    <img src="https://bmkg.xyz/img/home.png" alt="menu" width="40"></a></span>
+    </div>
+</div>
+
+<!-- Tombol Toggle -->
+
+
+<!-- Konten Utama -->
+<div class="container">
+    <h1>Selamat Datang di Website Saya</h1>
+    <p>Ini adalah contoh halaman dengan navbar yang dapat dibuka dan ditutup. Tombol menu akan mengikuti posisi navbar saat dibuka.</p>
+
+    <div class="card">
+        <br/>             <form id="subLinkForm">
+                <div class="form-group">
+                    <label for="app">Aplikasi</label>
+                    <select id="app" class="form-control" required>
+                        <option value="v2ray">V2RAY</option>
+                        <option value="v2rayng">V2RAYNG</option>
+                        <option value="clash">CLASH</option>
+                        <option value="nekobox">NEKOBOX</option>
+                        <option value="singbox">SINGBOX</option>
+                        <option value="surfboard">SURFBOARD</option>
+                        <option value="husi">HUSI</option>
+                    </select>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label for="limit">Jumlah Config</label>
+                    <input type="number" id="limit" class="form-control" min="1" max="999999" value="10" required>
+                </div>
+
+                <button type="submit" class="btn">Generate Sub Link</button>
+            </form>
+
+            <div id="loading" class="loading">Generating Link...</div>
+            <div id="error-message"></div>
+
+            <div id="result" class="result" style="display: none;">
+                <p id="generated-link"></p>
+                <div class="copy-btns">
+                    <button id="copyLink" class="copy-btn">Copy Link</button>
+                    <button id="openLink" class="copy-btn">Buka Link</button>
+                </div>
+            </div>
+    </div>
+
+    
+</div>
+<footer>
+   <h2> &copy; 2025 ${namaWeb}.</h2>
+</footer>
+
+<script>
+    function toggleNavbar() {
+        const navbar = document.getElementById("navbar");
+        const toggleIcon = document.getElementById("toggle-icon");
+
+        if (navbar.classList.contains("show")) {
+            navbar.classList.remove("show");
+            toggleIcon.src = "https://bmkg.xyz/img/buka.png";
+        } else {
+            navbar.classList.add("show");
+            toggleIcon.src = "https://bmkg.xyz/img/tutup.png";
+        }
+    }
+</script>
+    
+</body>
+</html>
