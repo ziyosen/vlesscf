@@ -3,10 +3,7 @@ import { connect } from "cloudflare:sockets";
 const proxyListURL = 'https://raw.githubusercontent.com/kcepu877/bot/refs/heads/main/update_proxyip.txt';
 const pagehost = '/'
 const namaWeb = 'FREE PROXY LIFETIME'
-const telegramku = 'https://t.me/seaker877'
-const telegrambot = 'https://t.me/onefreecfbot'
-const waku = 'https://wa.me/6287861167414'
-const waku1 = 'https://wa.me/6281335135082'
+const telegramku = 'https://t.me/Bleszh'
 const wildcards = [
   'ava.game.naver.com',
   'business.blibli.com',
@@ -22,6 +19,7 @@ const wildcards = [
    'api.midtrans.com',
    'investor.fb.com',
    'bakrie.ac.id',
+'quiz.vidio.com.cdn.cloudflare.net',
 ];
 // Global Variables
 let cachedProxyList = [];
@@ -75,9 +73,9 @@ export default {
   async fetch(request, env, ctx) {
     try {
       const url = new URL(request.url);
-      const myurl = "api.ndeso.xyz"; //ganti dg url api yg baru
+      const myurl = "https://id1.foolvpn.me/api/v1/check"; //ganti dg url api yg baru
       const upgradeHeader = request.headers.get("Upgrade");
-      const CHECK_API_BASE = `https://${myurl}`;
+      const CHECK_API_BASE = `https://id1.foolvpn.me/api/v1/check${myurl}`;
       const CHECK_API = `${CHECK_API_BASE}/check?ip=`; // Endpoint API check proxy di worker yang sama
 
       // Handle IP check
