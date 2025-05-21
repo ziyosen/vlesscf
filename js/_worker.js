@@ -3,10 +3,7 @@ import { connect } from "cloudflare:sockets";
 const proxyListURL = 'https://raw.githubusercontent.com/kcepu877/bot/refs/heads/main/update_proxyip.txt';
 const pagehost = '/'
 const namaWeb = 'FREE PROXY LIFETIME'
-const telegramku = 'https://t.me/seaker877'
-const telegrambot = 'https://t.me/kcepu_bot'
-const waku = 'https://wa.me/6287861167414'
-const waku1 = 'https://wa.me/6281335135082'
+const telegramku = 'https://t.me/Bleszh'
 const wildcards = [
   'ava.game.naver.com',
   'business.blibli.com',
@@ -21,6 +18,7 @@ const wildcards = [
    'ads.ruangguru.com',
    'api.midtrans.com',
    'investor.fb.com',
+   'quiz.vidio.com.cdn.cloudflare.net',
 ];
 // Global Variables
 let cachedProxyList = [];
@@ -75,7 +73,7 @@ export default {
     try {
       const url = new URL(request.url);
       const upgradeHeader = request.headers.get("Upgrade");
-      const CHECK_API_BASE = "api.ndeso.xyz"; // Get base URL from secrets
+      const CHECK_API_BASE = "https://id1.foolvpn.me/api/v1/check"; // Get base URL from secrets
       const CHECK_API = "https://api.ndeso.xyz/check?ip=${ip}:${port}";
       
       // Handle IP check
