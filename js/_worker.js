@@ -256,149 +256,357 @@ async function handleSubRequest(hostnem) {
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        :root {
-            --color-primary: #00ff88;
-            --color-secondary: #00ffff;
-            --color-background: #0a0f1a;
-            --color-card: rgba(15, 22, 36, 0.95);
-            --color-text: #e0f4f4;
-            --transition: all 0.3s ease;
-        }
+    
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Sub Link Generator</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/css/flag-icons.min.css">
+      <style>
+      
+  :root {
+      --primary: #3B82F6;
+      --secondary: #8B5CF6;
+      --bg-color: #0B1120; /* Warna latar belakang gelap */
+      --text-color: #f8fafc; /* Warna teks terang */
+      --table-border: #1e293b;
+      --accent: #10B981;
+      --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+  }
+  
+  html, body {
+      background-color: var(--bg-color); /* Pastikan background tetap gelap */
+      color: var(--text-color); /* Warna teks default */
+  }
+  
+  .header {
+      background: var(--gradient);
+      padding: 4rem 1rem;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin-bottom: 3rem;
+      position: relative;
+      overflow: hidden;
+  }
+  
+  .header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: rgba(255,255,255,0.1);
+  }
+  
+  .header-title {
+      font-size: 2.75rem;
+      font-weight: 800;
+      margin: 0;
+      letter-spacing: -0.025em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      color: var(--text-color); /* Warna teks putih */
+  }
+  
+  .header-subtitle {
+      font-size: 1rem;
+      color: var(--text-color); /* Warna teks putih */
+      margin-top: 0.75rem;
+      opacity: 0.9;
+  }
+  
+  .menu-container {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+  }
+  
+  .menu-button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.3s ease;
+  }
+  
+  .menu-button:hover {
+      background: var(--secondary);
+  }
+  
+  .menu-dropdown {
+      display: none;
+      position: absolute;
+      right: 0;
+      background: var(--bg-color); /* Warna background gelap */
+      border: 1px solid var(--table-border);
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      margin-top: 10px;
+      min-width: 150px;
+      max-height: 200px; /* Tinggi maksimum sebelum scroll muncul */
+      overflow-y: auto; /* Aktifkan scroll vertikal */
+      z-index: 1000; /* Pastikan menu muncul di atas elemen lain */
+  }
+  
+  .menu-dropdown a {
+      display: block;
+      padding: 10px 20px;
+      color: var(--text-color); /* Warna teks putih */
+      text-decoration: none;
+      font-size: 14px;
+      transition: background 0.3s ease;
+  }
+  
+  .menu-dropdown a:hover {
+      background: rgba(255, 255, 255, 0.05); /* Efek hover dengan transparansi */
+  }
+  
+  .menu-dropdown.show {
+      display: block;
+  }
+  
+  .watermark {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+      text-align: center;
+  }
+  
+  .watermark a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: color 0.3s ease;
+  }
+  
+  .watermark a:hover {
+      color: var(--accent);
+  }
+      
+  .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      overflow-x: hidden;
+  }
+  
+  .form-container {
+      max-width: 800px; /* Batasi lebar form */
+      margin: 0 auto;
+      padding: 2rem;
+      background: #1E293B;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-group input, .form-group select {
+      width: 100%;
+      padding: 0.8rem;
+      background: #334155;
+      border: 2px solid #475569;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+      color: white;
+      box-sizing: border-box; /* Pastikan padding tidak mempengaruhi lebar */
+  }
+  
+  .form-group {
+      margin-bottom: 1.5rem;
+  }
+  
+  label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: #94a3b8;
+  }
+  
+  select, input {
+      width: 100%;
+      padding: 0.8rem;
+      background: #334155;
+      border: 2px solid #475569;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+      color: white;
+  }
+  
+  select:focus, input:focus {
+      border-color: var(--accent);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1);
+  }
+  
+  button {
+      background: var(--gradient);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: block;
+      width: 100%;
+      font-size: 1.1rem;
+  }
+  
+  button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.2);
+  }
+  
+  .result-url {
+      color: var(--text-color);
+      font-weight: 500;
+      margin-bottom: 1rem;
+      font-family: monospace;
+      font-size: 0.9rem;
+      word-break: break-all;
+  }
+  
+  .result-box {
+      background: #1A2330;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-top: 2rem;
+      display: none;
+      border: 2px solid; /* Border lebih tebal */
+      border-image: var(--gradient) 1; /* Border gradien */
+      max-width: 100%;
+      overflow-wrap: break-word;
+  }
+  
+  .message-box {
+      background: #1A2330;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: var(--text-color);
+      border: 2px solid; /* Border lebih tebal */
+      border-image: var(--gradient) 1; /* Border gradien */
+  }
+  
+  .app-link {
+      display: block;
+      margin-top: 1rem;
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+  }
+  
+  .limit-info {
+      font-size: 0.8rem;
+      color: #aaa;
+      margin-top: 0.5rem;
+  }
+  
+  .button-group {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+  }
+  
+  .button-group button {
+      flex: 1;
+      padding: 0.75rem;
+      font-size: 1rem;
+  }
+  
+  .notification {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1e293b; /* Warna latar belakang default */
+      color: #ffffff; /* Warna teks default */
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-weight: 500;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      z-index: 999;
+  }
+  
+  .notification.success {
+      background: #4CAF50; /* Warna hijau untuk sukses */
+      color: #ffffff; /* Warna teks putih agar kontras */
+  }
+  
+  .notification.error {
+      background: #F44336; /* Warna merah untuk error */
+      color: #ffffff; /* Warna teks putih agar kontras */
+  }
+  
+  .notification.show {
+      opacity: 1;
+  }
+  
+  .result-label {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-color);
+      margin-bottom: 1rem;
+  }
+  
+  @media (max-width: 768px) {
+      .form-container {
+          padding: 1rem;
+      }
+  
+      .button-group {
+          flex-direction: column;
+      }
+  }
+      </style>
+  </head>
+  <body>
+      
+  <header class="header">
+      <div class="container">
+          <h1 class="header-title">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+              </svg>
+                 Proxy Database
+          </h1>
+          <p class="header-subtitle">Premium Proxy Network Management System</p>
+          <div class="watermark">
+              <a href="https://t.me/Bleszh" target="_blank">Telegram | Click</a>
+          </div>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            outline: none;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--color-background);
-            color: var(--color-text);
-            line-height: 1.6;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 500px;
-            padding: 2rem;
-        }
-
-        .card {
-            background: var(--color-card);
-            border-radius: 16px;
-            padding: 2rem;
-            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 255, 136, 0.2);
-            transition: var(--transition);
-        }
-
-        .title {
-            text-align: center;
-            color: var(--color-primary);
-            margin-bottom: 1.5rem;
-            font-size: 2rem;
-            font-weight: 700;
-        }
-
-        .form-group {
-            margin-bottom: 1rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--color-text);
-            font-weight: 500;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            background: rgba(0, 255, 136, 0.05);
-            border: 2px solid rgba(0, 255, 136, 0.3);
-            border-radius: 8px;
-            color: var(--color-text);
-            transition: var(--transition);
-        }
-
-        .form-control:focus {
-            border-color: var(--color-secondary);
-            box-shadow: 0 0 0 3px rgba(0, 255, 255, 0.2);
-        }
-
-        .btn {
-            width: 100%;
-            padding: 0.75rem;
-            background: var(--color-primary);
-            color: var(--color-background);
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .btn:hover {
-            background: var(--color-secondary);
-        }
-
-        .result {
-            margin-top: 1rem;
-            padding: 1rem;
-            background: rgba(0, 255, 136, 0.1);
-            border-radius: 8px;
-            word-break: break-all;
-        }
-
-        .loading {
-            display: none;
-            text-align: center;
-            color: var(--color-primary);
-            margin-top: 1rem;
-        }
-
-        .copy-btns {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 0.5rem;
-        }
-
-        .copy-btn {
-            background: rgba(0, 255, 136, 0.2);
-            color: var(--color-primary);
-            padding: 0.5rem;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .copy-btn:hover {
-            background: rgba(0, 255, 136, 0.3);
-        }
-
-        #error-message {
-            color: #ff4444;
-            text-align: center;
-            margin-top: 1rem;
-        }
+          </div>
+      </div>
     </style>
 </head>
 <body>
     <div class="container">
         <div class="card">
-            <h1 class="title">${namaWeb}</h1>
-<center><a href="${pagehost}" target="_self" rel="noopener noreferrer">
-    <button style="background-color: #cde033; color: black; border: none; padding: 6px 12px; cursor: pointer; font-family: 'Rajdhani', sans-serif; border-radius: 5px;">Home Page</button></a></center>
-                       <form id="subLinkForm">
+            <h1 class="title">Sub Link Generator</h1>
+            <form id="subLinkForm">
                 <div class="form-group">
                     <label for="app">Aplikasi</label>
                     <select id="app" class="form-control" required>
@@ -408,28 +616,12 @@ async function handleSubRequest(hostnem) {
                         <option value="nekobox">NEKOBOX</option>
                         <option value="singbox">SINGBOX</option>
                         <option value="surfboard">SURFBOARD</option>
-                        <option value="husi">HUSI</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label for="bug">Bug</label>
-                    <select id="bug" class="form-control" required>
-                    <option value="MASUKAN BUG">NO BUG</option>
-                    <option value="business.blibli.com">business.blibli.com</option>
-                    <option value="ava.game.naver.com">ava.game.naver.com</option>
-                    <option value="graph.instagram.com">graph.instagram.com</option>
-                    <option value="quiz.int.vidio.com">quiz.int.vidio.com</option>
-                    <option value="live.iflix.com">live.iflix.com</option>
-                    <option value="support.zoom.us">support.zoom.us</option>
-                    <option value="blog.webex.com">blog.webex.com</option>
-                    <option value="investors.spotify.com">investors.spotify.com</option>
-                    <option value="cache.netflix.com">cache.netflix.com</option>
-                    <option value="zaintest.vuclip.com">zaintest.vuclip.com</option>
-                    <option value="ads.ruangguru.com">io.ruangguru.com</option>
-                    <option value="api.midtrans.com">api.midtrans.com</option>
-                    <option value="investor.fb.com">investor.fb.com</option>
-                </select>
+                    <input type="text" id="bug" class="form-control" placeholder="Contoh: quiz.int.vidio.com" required>
                 </div>
 
                 <div class="form-group">
@@ -437,23 +629,23 @@ async function handleSubRequest(hostnem) {
                     <select id="configType" class="form-control" required>
                         <option value="vless">VLESS</option>
                         <option value="trojan">TROJAN</option>
-                        <option value="ss">SHADOWSOCKS</option>
+                        <option value="shadowsocks">SHADOWSOCKS</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="tls">TLS/NTLS</label>
+                    <label for="tls">TLS</label>
                     <select id="tls" class="form-control">
-                        <option value="true">TLS 443</option>
-                        <option value="false">NTLS 80</option>
+                        <option value="true">TRUE</option>
+                        <option value="false">FALSE</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label for="wildcard">Wildcard</label>
                     <select id="wildcard" class="form-control">
-                        <option value="false">OFF</option>
-                        <option value="true">ON</option>
+                        <option value="true">TRUE</option>
+                        <option value="false">FALSE</option>
                     </select>
                 </div>
 
@@ -461,8 +653,8 @@ async function handleSubRequest(hostnem) {
                     <label for="country">Negara</label>
                     <select id="country" class="form-control">
                         <option value="all">ALL COUNTRY</option>
-                        <option value="RANDOM">RANDOM</option>
-    <option value="SG">Singapore</option>
+                        <option value="random">RANDOM</option>
+                          <option value="SG">Singapore</option>
     <option value="US">United States</option>
     <option value="AF">Afghanistan</option>
     <option value="AL">Albania</option>
@@ -699,14 +891,17 @@ async function handleSubRequest(hostnem) {
                     </select>
                 </div>
 
+                </div>
+
                 <div class="form-group">
                     <label for="limit">Jumlah Config</label>
                     <input type="number" id="limit" class="form-control" min="1" max="999999" value="10" required>
                 </div>
+                
 
                 <button type="submit" class="btn">Generate Sub Link</button>
             </form>
-
+            
             <div id="loading" class="loading">Generating Link...</div>
             <div id="error-message"></div>
 
@@ -715,11 +910,15 @@ async function handleSubRequest(hostnem) {
                 <div class="copy-btns">
                     <button id="copyLink" class="copy-btn">Copy Link</button>
                     <button id="openLink" class="copy-btn">Buka Link</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
+  </div>
+  <div class="notification" id="copyNotification">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 6 9 17l-5-5"/>
+      </svg>
+      URL copied successfully!
+  </div>
+          </div>
+      </div>
     <script>
         // Performance optimization: Use event delegation and minimize DOM queries
         document.addEventListener('DOMContentLoaded', () => {
@@ -772,7 +971,7 @@ async function handleSubRequest(hostnem) {
                     const requiredFields = ['bug', 'limit'];
                     for (let field of requiredFields) {
                         if (!elements[field].value.trim()) {
-                            throw new Error(\`Harap isi \${field === 'bug' ? 'Bug' : 'Jumlah Config'}\`);
+                            throw new Error(`Harap isi ${field === 'bug' ? 'Bug' : 'Jumlah Config'}`);
                         }
                     }
 
@@ -787,7 +986,7 @@ async function handleSubRequest(hostnem) {
                     });
 
                     // Generate full link (replace with your actual domain)
-                    const generatedLink = \`/api/\${elements.app.value}?\${params.toString()}\`;
+                    const generatedLink = `/api/${elements.app.value}?${params.toString()}`;
 
                     // Simulate loading (remove in production)
                     await new Promise(resolve => setTimeout(resolve, 500));
@@ -795,7 +994,7 @@ async function handleSubRequest(hostnem) {
                     // Update UI
                     loadingEl.style.display = 'none';
                     resultEl.style.display = 'block';
-                    generatedLinkEl.textContent = \`https://\${window.location.hostname}\${generatedLink}\`;
+                    generatedLinkEl.textContent = `https://${window.location.hostname}${generatedLink}`;
 
                     // Copy link functionality
                     copyLinkBtn.onclick = async () => {
