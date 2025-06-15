@@ -1038,7 +1038,7 @@ async function handleSubRequest(hostnem) {
 </body>
 </html>
  `
-return html
+ 
 }
 
 async function handleWebRequest(request) {
