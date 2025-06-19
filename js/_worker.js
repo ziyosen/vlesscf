@@ -228,9 +228,39 @@ function groupBy(array, key) {
 
 async function handleSubRequest(hostnem) {
   const html = `
+
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="id">
+ <head>
+  <!-- Meta tags dan CSS lainnya -->
+  <style>
+  #video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -100;
+  }
+
+  .navbar {
+    position: relative;
+    z-index: 1000;
+  }
+</style>
+</head>
+<body>
+  <video autoplay loop muted id="video-background">
+    <source src="https://raw.githubusercontent.com/ziyosen/xproject-vpn/master/9eedaddbdc86d6b7977691dfb5d46f00.mp4" type="video/mp4" ></source>                         
+   Your browser does not support the video tag.
+  </video>
+  
+  <!-- Konten utama Anda di sini -->
+
+
+  <!-- Script lainnya -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FREE | CF | PROXY | LIFETIME</title>
@@ -242,368 +272,354 @@ async function handleSubRequest(hostnem) {
     <!-- Open Graph Meta Tags untuk SEO Media Sosial -->
     <meta property="og:title" content="FREE | CF | PROXY | LIFETIME">
     <meta property="og:description" content="FREE | CF | PROXY | LIFETIME">
-    <meta property="og:image" content="https://kere.us.kg/img/botvpn.jpg"> <!-- Ganti dengan URL gambar yang sesuai -->
-    <meta property="og:url" content="https://kere.us.kg/img/botvpn.jpg">
+    <meta property="og:image" content="https://bmkg.xyz/img/botvpn.jpg"> <!-- Ganti dengan URL gambar yang sesuai -->
+    <meta property="og:url" content="https://bmkg.xyz/img/botvpn.jpg">
     <meta property="og:type" content="website">
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="FREE | CF | PROXY | LIFETIME">
     <meta name="twitter:description" content="FREE | CF | PROXY | LIFETIME">
-    <meta name="twitter:image" content="https://kere.us.kg/img/botvpn.jpg"> <!-- Ganti dengan URL gambar yang sesuai -->
-    <link href="https://kere.us.kg/img/botvpn.jpg" rel="icon" type="image/png">
+    <meta name="twitter:image" content="https://bmkg.xyz/img/botvpn.jpg"> <!-- Ganti dengan URL gambar yang sesuai -->
+    <link href="https://bmkg.xyz/img/botvpn.jpg" rel="icon" type="image/png">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-    
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Sub Link Generator</title>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/css/flag-icons.min.css">
-      <style>
-      
-  :root {
-      --primary: #3B82F6;
-      --secondary: #8B5CF6;
-      --bg-color: #0B1120; /* Warna latar belakang gelap */
-      --text-color: #f8fafc; /* Warna teks terang */
-      --table-border: #1e293b;
-      --accent: #10B981;
-      --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
-  }
-  
-  html, body {
-      background-color: var(--bg-color); /* Pastikan background tetap gelap */
-      color: var(--text-color); /* Warna teks default */
-  }
-  
-  .header {
-      background: var(--gradient);
-      padding: 4rem 1rem;
-      text-align: center;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      margin-bottom: 3rem;
-      position: relative;
-      overflow: hidden;
-  }
-  
-  .header::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: rgba(255,255,255,0.1);
-  }
-  
-  .header-title {
-      font-size: 2.75rem;
-      font-weight: 800;
-      margin: 0;
-      letter-spacing: -0.025em;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      color: var(--text-color); /* Warna teks putih */
-  }
-  
-  .header-subtitle {
-      font-size: 1rem;
-      color: var(--text-color); /* Warna teks putih */
-      margin-top: 0.75rem;
-      opacity: 0.9;
-  }
-  
-  .menu-container {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      z-index: 1000;
-  }
-  
-  .menu-button {
-      background: var(--primary);
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 16px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: background 0.3s ease;
-  }
-  
-  .menu-button:hover {
-      background: var(--secondary);
-  }
-  
-  .menu-dropdown {
-      display: none;
-      position: absolute;
-      right: 0;
-      background: var(--bg-color); /* Warna background gelap */
-      border: 1px solid var(--table-border);
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      margin-top: 10px;
-      min-width: 150px;
-      max-height: 200px; /* Tinggi maksimum sebelum scroll muncul */
-      overflow-y: auto; /* Aktifkan scroll vertikal */
-      z-index: 1000; /* Pastikan menu muncul di atas elemen lain */
-  }
-  
-  .menu-dropdown a {
-      display: block;
-      padding: 10px 20px;
-      color: var(--text-color); /* Warna teks putih */
-      text-decoration: none;
-      font-size: 14px;
-      transition: background 0.3s ease;
-  }
-  
-  .menu-dropdown a:hover {
-      background: rgba(255, 255, 255, 0.05); /* Efek hover dengan transparansi */
-  }
-  
-  .menu-dropdown.show {
-      display: block;
-  }
-  
-  .watermark {
-      position: absolute;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 0.9rem;
-      color: rgba(255, 255, 255, 0.7);
-      text-align: center;
-  }
-  
-  .watermark a {
-      color: rgba(255, 255, 255, 0.7);
-      text-decoration: none;
-      transition: color 0.3s ease;
-  }
-  
-  .watermark a:hover {
-      color: var(--accent);
-  }
-      
-  .container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 2rem;
-      overflow-x: hidden;
-  }
-  
-  .form-container {
-      max-width: 800px; /* Batasi lebar form */
-      margin: 0 auto;
-      padding: 2rem;
-      background: #1E293B;
-      border-radius: 12px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .form-group input, .form-group select {
-      width: 100%;
-      padding: 0.8rem;
-      background: #334155;
-      border: 2px solid #475569;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-      font-size: 1rem;
-      color: white;
-      box-sizing: border-box; /* Pastikan padding tidak mempengaruhi lebar */
-  }
-  
-  .form-group {
-      margin-bottom: 1.5rem;
-  }
-  
-  label {
-      display: block;
-      margin-bottom: 0.5rem;
-      font-weight: 500;
-      color: #94a3b8;
-  }
-  
-  select, input {
-      width: 100%;
-      padding: 0.8rem;
-      background: #334155;
-      border: 2px solid #475569;
-      border-radius: 8px;
-      transition: all 0.3s ease;
-      font-size: 1rem;
-      color: white;
-  }
-  
-  select:focus, input:focus {
-      border-color: var(--accent);
-      outline: none;
-      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1);
-  }
-  
-  button {
-      background: var(--gradient);
-      color: white;
-      padding: 0.8rem 1.5rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: transform 0.2s, box-shadow 0.2s;
-      display: block;
-      width: 100%;
-      font-size: 1.1rem;
-  }
-  
-  button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.2);
-  }
-  
-  .result-url {
-      color: var(--text-color);
-      font-weight: 500;
-      margin-bottom: 1rem;
-      font-family: monospace;
-      font-size: 0.9rem;
-      word-break: break-all;
-  }
-  
-  .result-box {
-      background: #1A2330;
-      border-radius: 8px;
-      padding: 1.5rem;
-      margin-top: 2rem;
-      display: none;
-      border: 2px solid; /* Border lebih tebal */
-      border-image: var(--gradient) 1; /* Border gradien */
-      max-width: 100%;
-      overflow-wrap: break-word;
-  }
-  
-  .message-box {
-      background: #1A2330;
-      padding: 1rem;
-      border-radius: 8px;
-      margin-top: 1rem;
-      font-size: 0.9rem;
-      line-height: 1.5;
-      color: var(--text-color);
-      border: 2px solid; /* Border lebih tebal */
-      border-image: var(--gradient) 1; /* Border gradien */
-  }
-  
-  .app-link {
-      display: block;
-      margin-top: 1rem;
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 500;
-  }
-  
-  .limit-info {
-      font-size: 0.8rem;
-      color: #aaa;
-      margin-top: 0.5rem;
-  }
-  
-  .button-group {
-      display: flex;
-      gap: 1rem;
-      margin-top: 1rem;
-  }
-  
-  .button-group button {
-      flex: 1;
-      padding: 0.75rem;
-      font-size: 1rem;
-  }
-  
-  .notification {
-      position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #1e293b; /* Warna latar belakang default */
-      color: #ffffff; /* Warna teks default */
-      padding: 1rem 2rem;
-      border-radius: 50px;
-      font-weight: 500;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      opacity: 0;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      z-index: 999;
-  }
-  
-  .notification.success {
-      background: #4CAF50; /* Warna hijau untuk sukses */
-      color: #ffffff; /* Warna teks putih agar kontras */
-  }
-  
-  .notification.error {
-      background: #F44336; /* Warna merah untuk error */
-      color: #ffffff; /* Warna teks putih agar kontras */
-  }
-  
-  .notification.show {
-      opacity: 1;
-  }
-  
-  .result-label {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--text-color);
-      margin-bottom: 1rem;
-  }
-  
-  @media (max-width: 768px) {
-      .form-container {
-          padding: 1rem;
+          :root {
+        --primary: #00ff88;
+        --secondary: #00ffff;
+        --accent: #ff00ff;
+        --dark: #080c14;
+        --darker: #040608;
+        --light: #e0ffff;
+            --color-primary: #80808000;
+            --color-secondary: #00ffff;
+            --color-background: #0a0f1a;
+            --color-card: rgba(15, 22, 36, 0.95);
+            --color-text: #ffffff;
+            --transition: all 0.3s ease;
+            
+        --card-bg: rgba(8, 12, 20, 0.95);
+        --glow: 0 0 20px rgba(0, 255, 136, 0.3);
       }
-  
-      .button-group {
-          flex-direction: column;
-      }
-  }
-      </style>
-  </head>
-  <body>
-      
-  <header class="header">
-      <div class="container">
-          <h1 class="header-title">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-              </svg>
-                 Proxy Database
-          </h1>
-          <p class="header-subtitle">Premium Proxy Network Management System</p>
-          <div class="watermark">
-              <a href="https://t.me/Bleszh" target="_blank">Telegram | Click</a>
-          </div>
+.navbar {
+  position: relative;
+  z-index: 1000;
+  background-color: transparent; /* atau warna background navbar Anda */
+}
 
-          </div>
-      </div>
+}
+       h1 {
+      font-family: 'Rajdhani', sans-serif;
+      padding-top: 10px; /* To avoid content being hidden under the header */
+      margin-top: 10px;
+      color: black;
+            text-align: center;
+            font-size: 9vw;
+            font-weight: bold;
+            text-shadow: 
+                0 0 5px rgba(0, 123, 255, 0.8),
+                0 0 10px rgba(0, 123, 255, 0.8),
+                0 0 20px rgba(0, 123, 255, 0.8),
+                0 0 30px rgba(0, 123, 255, 0.8),
+                0 0 40px rgba(0, 123, 255, 0.8);
+    
+         background: linear-gradient(45deg, var(--primary), var(--secondary), var(--dark));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 30px #000;
+        position: relative;
+        animation: titlePulse 3s ease-in-out infinite;
+    }
+
+      @keyframes titlePulse {
+        0%, 100% { transform: scale(1); filter: brightness(1); }
+        50% { transform: scale(1.02); filter: brightness(1.2); }
+      }
+    
+    h2 {
+      color: black;
+            text-align: center;
+            font-size: 4vw;
+            font-weight: bold;
+            text-shadow: 
+                0 0 5px rgba(0, 123, 255, 0.8),
+                0 0 10px rgba(0, 123, 255, 0.8),
+                0 0 20px rgba(0, 123, 255, 0.8),
+                0 0 30px rgba(0, 123, 255, 0.8),
+                0 0 40px rgba(0, 123, 255, 0.8);
+    }
+    header, footer {
+      box-sizing: border-box; /* Pastikan padding dihitung dalam lebar elemen */
+      background-color: ;
+      color: white;
+      text-align: center;
+      border: 0px solid rgba(143, 0, 0, 0.89); /* Border dengan warna abu-abu */
+      border-radius: 10px;
+      padding: 0 20px;
+      position: fixed;
+      width: 100%;
+      left: 0;
+      right: 2px;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    header {
+      top: 0;
+    }
+
+    footer {
+      bottom: 0;
+    }
+    
+  .title {
+            text-align: center;
+            color: var(--color-primary);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--color-text);
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: rgba(0, 255, 136, 0.05);
+            border: 2px solid #000000cc;
+            border-radius: 8px;
+            color: var(--color-text);
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--color-secondary);
+            box-shadow: 0 0 0 3px rgba(0, 255, 255, 0.2);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 0.75rem;
+            background: none;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            background: var(--color-secondary);
+        }
+
+        .result {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(0, 255, 136, 0.1);
+            border-radius: 8px;
+            word-break: break-all;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            color: #ffffff;
+            margin-top: 1rem;
+        }
+
+        .copy-btns {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5rem;
+        }
+
+        .copy-btn {
+            background: rgba(0, 0, 0, 0.2);
+            color: #ffffff;
+            padding: 0.5rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .copy-btn:hover {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        #error-message {
+            color: #ff4444;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 80px;
+            height: 100vh;
+            background: ;
+            color: white;
+            padding: 10px 0px;
+            transition: transform 0.3s ease-in-out;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0 10px 10px 0;
+            transform: translateX(-100%);
+        }
+
+        .navbar.show {
+            transform: translateX(0);
+        }
+
+        .navbar a {
+            display: block;
+            margin: 10px 0;
+        }
+
+        .navbar a img {
+            width: 40px;
+        }
+
+        /* Tombol Toggle */
+        .toggle-btn {
+            position: fixed;
+            top: 60%;
+            left: 0px;
+            transform: translateY(-50%);
+            background: ;
+            border: none;
+            cursor: pointer;            
+            justify-content: center;
+            z-index: 1001;
+            padding: 0px;
+            border-radius: 50%;
+            transition: left 0.3s ease-in-out;
+        }
+
+        .toggle-btn img {
+            width: 18px;
+        }
+
+        /* Saat navbar terbuka, tombol ikut bergeser */
+        .navbar.show + .toggle-btn {
+            left: 80px;
+        }
+
+        /* Konten Utama */
+        .container {
+              background-color: rgba(0, 0, 0, 0.150);
+    flex: 1;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 95px;
+    margin-bottom: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: column;
+    max-width: 960px;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+
+/* Menambahkan margin-left agar konten tidak terhalang navbarr */
+    margin-left: 110px; /* Jarak sesuai dengan lebar navbarr */
+    margin-right: auto;
+
+  /* Tambahkan efek glow */
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), /* Glow putih */
+              0 0 30px rgba(0, 150, 255, 0.5);   /* Glow biru */
+  
+  /* Default untuk HP */
+  margin-left: auto;
+  margin-right: auto;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+          .card {
+            width: 100%;
+            margin-top: 10px;
+            padding-top: 10px; /* To avoid content being hidden under the header */
+            max-width: 500px;
+            padding: 2rem;
+            align-items: center;
+  position: relative;
+  z-index: 1;
+            
+        }
+
+         .navbarconten {
+    width: 100%;
+    overflow-x: auto; /* Mengaktifkan scroll horizontal */
+    margin-bottom: 0px;
+    border: 1px solid #000; /* Border dengan warna abu-abu */
+    border-radius: 10px; /* Membuat sudut melengkung */
+    padding: 0px; /* Memberi jarak antara border dan konten */
+    background-color: rgba(0, 0, 0, 0.82); /* Warna latar belakang */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6), /* Glow putih */
+              0 0 30px rgba(0, 150, 255, 0.5);   /* Glow biru */
+
+    }
     </style>
-</head>
-<body>
-    <div class="container">
-        <div class="card">
-            <h1 class="title">Sub Link Generator</h1>
-            <form id="subLinkForm">
+
+<!-- Navbar -->
+<div class="navbar" id="navbar">
+    <div class="navbarconten">
+        <span><a href="https://benxx.dpdns.org/sub" target="_self" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;">
+    <img src="https://bmkg.xyz/img/vpn.png" alt="menu" width="40" style="margin-top: 5px;">
+  </a></span>
+        <span><a href="https://t.me/Bleszh" target="_blank" rel="noopener noreferrer" style="font-family: 'Rajdhani', sans-serif;"><img src="https://bmkg.xyz/img/tele.png
+" alt="menu" width="40"></a></span>
+        <span><a href="https://www.benxx.dpdns.org" target="_self" rel="noopener noreferrer">
+    <img src="https://bmkg.xyz/img/home.png" alt="menu" width="40"></a></span>
+    </div>
+</div>
+
+<!-- Tombol Toggle -->
+<button class="toggle-btn" id="menu-btn" onclick="toggleNavbar()">
+    <img src="https://bmkg.xyz/img/buka.png" alt="Toggle Menu">
+</button>
+
+<!-- Konten Utama -->
+<style>
+  h1 {
+    color: #FFFFFF !important;
+  }
+</style>
+
+<div class="container">
+    <h1>SUBLINK GENERATOR</h1>
+    <div class="card">
+        <br/>             <form id="subLinkForm">
                 <div class="form-group">
                     <label for="app">Aplikasi</label>
                     <select id="app" class="form-control" required>
@@ -613,12 +629,14 @@ async function handleSubRequest(hostnem) {
                         <option value="nekobox">NEKOBOX</option>
                         <option value="singbox">SINGBOX</option>
                         <option value="surfboard">SURFBOARD</option>
+                        <option value="husi">HUSI</option>
                     </select>
                 </div>
 
-                <div class="form-group">
+                         <div class="form-group">
                     <label for="bug">Bug</label>
                     <input type="text" id="bug" class="form-control" placeholder="Contoh: quiz.int.vidio.com" required>
+                </select>
                 </div>
 
                 <div class="form-group">
@@ -626,23 +644,23 @@ async function handleSubRequest(hostnem) {
                     <select id="configType" class="form-control" required>
                         <option value="vless">VLESS</option>
                         <option value="trojan">TROJAN</option>
-                        <option value="shadowsocks">SHADOWSOCKS</option>
+                        <option value="ss">SHADOWSOCKS</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="tls">TLS</label>
+                    <label for="tls">TLS/NTLS</label>
                     <select id="tls" class="form-control">
-                        <option value="true">TRUE</option>
-                        <option value="false">FALSE</option>
+                        <option value="true">TLS 443</option>
+                        <option value="false">NTLS 80</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label for="wildcard">Wildcard</label>
                     <select id="wildcard" class="form-control">
-                        <option value="true">TRUE</option>
-                        <option value="false">FALSE</option>
+                        <option value="false">OFF</option>
+                        <option value="true">ON</option>
                     </select>
                 </div>
 
@@ -650,8 +668,8 @@ async function handleSubRequest(hostnem) {
                     <label for="country">Negara</label>
                     <select id="country" class="form-control">
                         <option value="all">ALL COUNTRY</option>
-                        <option value="random">RANDOM</option>
-                          <option value="SG">Singapore</option>
+                        <option value="RANDOM">RANDOM</option>
+    <option value="SG">Singapore</option>
     <option value="US">United States</option>
     <option value="AF">Afghanistan</option>
     <option value="AL">Albania</option>
@@ -706,7 +724,7 @@ async function handleSubRequest(hostnem) {
     <option value="CU">Cuba</option>
     <option value="CY">Cyprus</option>
     <option value="CZ">Czech Republic</option>
-    <option value="CI">CÃ´te d'Ivoire</option>
+    <option value="CI">Côte d'Ivoire</option>
     <option value="DK">Denmark</option>
     <option value="DJ">Djibouti</option>
     <option value="DM">Dominica</option>
@@ -821,11 +839,11 @@ async function handleSubRequest(hostnem) {
     <option value="PT">Portugal</option>
     <option value="PR">Puerto Rico</option>
     <option value="QA">Qatar</option>
-    <option value="RE">RÃ©union</option>
+    <option value="RE">Réunion</option>
     <option value="RO">Romania</option>
     <option value="RU">Russia</option>
     <option value="RW">Rwanda</option>
-    <option value="BL">Saint BarthÃ©lemy</option>
+    <option value="BL">Saint Barthélemy</option>
     <option value="SH">Saint Helena</option>
     <option value="KN">Saint Kitts and Nevis</option>
     <option value="LC">Saint Lucia</option>
@@ -888,17 +906,14 @@ async function handleSubRequest(hostnem) {
                     </select>
                 </div>
 
-                </div>
-
                 <div class="form-group">
                     <label for="limit">Jumlah Config</label>
                     <input type="number" id="limit" class="form-control" min="1" max="999999" value="10" required>
                 </div>
-                
 
                 <button type="submit" class="btn">Generate Sub Link</button>
             </form>
-            
+
             <div id="loading" class="loading">Generating Link...</div>
             <div id="error-message"></div>
 
@@ -907,15 +922,26 @@ async function handleSubRequest(hostnem) {
                 <div class="copy-btns">
                     <button id="copyLink" class="copy-btn">Copy Link</button>
                     <button id="openLink" class="copy-btn">Buka Link</button>
-  </div>
-  <div class="notification" id="copyNotification">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M20 6 9 17l-5-5"/>
-      </svg>
-      URL copied successfully!
-  </div>
-          </div>
-      </div>
+                </div>
+            </div>
+    </div>
+
+    
+</div>
+<script>
+    function toggleNavbar() {
+        const navbar = document.getElementById("navbar");
+        const menuBtn = document.getElementById("menu-btn").querySelector('img');
+
+        if (navbar.classList.contains("show")) {
+            navbar.classList.remove("show");
+            menuBtn.src = "https://bmkg.xyz/img/buka.png";
+        } else {
+            navbar.classList.add("show");
+            menuBtn.src = "https://bmkg.xyz/img/tutup.png";
+        }
+    }
+</script>
     <script>
         // Performance optimization: Use event delegation and minimize DOM queries
         document.addEventListener('DOMContentLoaded', () => {
@@ -1023,7 +1049,7 @@ async function handleSubRequest(hostnem) {
 
                     // Open link functionality
                     openLinkBtn.onclick = () => {
-                        window.open(generatedLink, '_blank');
+                        window.open(generatedLink, '_self');
                     };
 
                 } catch (error) {
